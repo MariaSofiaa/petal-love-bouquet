@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
-import { RouterLink, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { RippleDirective } from '../ripple.directive';
 import { SharingService, DrawingPath } from '../sharing.service';
@@ -8,7 +8,7 @@ import { SharingService, DrawingPath } from '../sharing.service';
 @Component({
     selector: 'app-create-bouquet',
     standalone: true,
-    imports: [CommonModule, RouterLink, FormsModule, RippleDirective],
+    imports: [CommonModule, FormsModule, RippleDirective],
     templateUrl: './create-bouquet.html',
     styleUrls: ['./create-bouquet.css']
 })
