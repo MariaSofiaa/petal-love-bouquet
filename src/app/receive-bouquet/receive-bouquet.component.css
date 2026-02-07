@@ -1,0 +1,170 @@
+:host {
+    font-family: 'Average', serif;
+    display: block;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.background-container-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url('/assets/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Adding the greenish overlay effect over the background image */
+}
+
+/* Pseudo-element for the green overlay tint */
+.background-container-overlay::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(168, 201, 155, 0.65);
+    /* Adjusted to match the greenish tint in prompt */
+    backdrop-filter: blur(1px);
+}
+
+main {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    margin: 12px;
+    position: relative;
+    z-index: 1;
+}
+
+.content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.bouquet-container {
+    margin-bottom: 0.5rem;
+}
+
+.bouquet-img {
+    width: 150px;
+    height: auto;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+}
+
+.title {
+    font-family: 'Belanosima', serif;
+    font-size: 1.5rem;
+    color: #1a3c28;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.sender-info {
+    font-family: 'Average', serif;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #1a3c28;
+}
+
+.sender-info .label {
+    margin-right: 0.5rem;
+}
+
+.sender-info .name {
+    font-style: italic;
+    font-weight: 500;
+}
+
+.message {
+    font-family: 'Average', serif;
+    font-size: 0.9rem;
+    color: #2c3e30;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.btn-view-bouquet {
+    background: linear-gradient(135deg, #a68b6c 0%, #8c7356 100%);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.7rem 0.6rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 10px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-bottom: 1.3rem;
+    position: relative;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+    font-family: 'Average', serif;
+}
+
+.btn-view-bouquet:active {
+    transform: translateY(2px);
+}
+
+.back-link {
+    color: #3e4a3c;
+    text-decoration: none;
+    font-family: 'Average', serif;
+    font-size: 0.8rem;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+    cursor: pointer;
+}
+
+.back-link:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* Footer styles moved to global styles.css */
+
+/* Animations from app.css */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 20px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.animate-fade-up {
+    opacity: 0;
+    animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Media Queries */
+@media (max-width: 600px) {
+    .content-wrapper {
+        padding: 1.5rem;
+    }
+
+    .title {
+        font-size: 0.9rem;
+    }
+
+    .bouquet-img {
+        width: 120px;
+    }
+}
