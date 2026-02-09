@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, ActivatedRoute } from '@angular/router';
 import { RippleDirective } from '../ripple.directive';
+import { SharingService } from '../sharing.service';
 
 @Component({
     selector: 'app-receive-bouquet',
@@ -10,11 +11,17 @@ import { RippleDirective } from '../ripple.directive';
     styleUrl: './receive-bouquet.component.css'
 })
 export class ReceiveBouquetComponent implements OnInit {
-    constructor(private route: ActivatedRoute) { }
+    constructor(
+        private route: ActivatedRoute,
+        private sharingService: SharingService
+    ) { }
 
     ngOnInit() {
         this.route.queryParams.subscribe(params => {
-            console.log('ReceiveBouquet: Query parameters:', params);
+            const data = params['d'];
+            if (data) {
+                this.sharingService.saveReceivedBouquet(data);
+            }
         });
     }
 }

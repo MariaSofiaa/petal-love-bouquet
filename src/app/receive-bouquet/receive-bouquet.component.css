@@ -59,10 +59,10 @@ main {
     margin-bottom: 0.5rem;
 }
 
-.bouquet-img {
-    width: 150px;
-    height: auto;
+.bouquet-emoji-large {
+    font-size: 5rem;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+    display: inline-block;
 }
 
 .title {

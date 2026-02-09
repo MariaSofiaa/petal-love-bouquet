@@ -144,6 +144,27 @@ h1.logo {
     backdrop-filter: blur(4px);
 }
 
+.btn-stored {
+    background: linear-gradient(135deg, #417551 0%, #1a3c28 100%);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: pulse-border 2s infinite;
+}
+
+@keyframes pulse-border {
+    0% {
+        box-shadow: 0 0 0 0 rgba(65, 117, 81, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(65, 117, 81, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(65, 117, 81, 0);
+    }
+}
+
 .btn i {
     font-size: 1.25rem;
 }

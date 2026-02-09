@@ -18,16 +18,16 @@
         <!-- Flowers section -->
         <div class="flowers-container animate-fade-up" style="animation-delay: 0.2s">
             <button class="flower-btn flower-1" appRipple (click)="openModal(1)">
-                <img src="/assets/flower-pink-cosmos.png" alt="Pink Cosmos">
+                <span class="emoji-flower">🌸</span>
             </button>
             <button class="flower-btn flower-2" appRipple (click)="openModal(2)">
-                <img src="/assets/flower-red-hibiscus.png" alt="Red Hibiscus">
+                <span class="emoji-flower">🌺</span>
             </button>
             <button class="flower-btn flower-3" appRipple (click)="openModal(3)">
-                <img src="/assets/flower-pink-tulip.png" alt="Pink Tulip">
+                <span class="emoji-flower">🌷</span>
             </button>
             <button class="flower-btn flower-4" appRipple (click)="openModal(4)">
-                <img src="/assets/flower-white-daisy.png" alt="White Daisy">
+                <span class="emoji-flower">🌼</span>
             </button>
         </div>
 
@@ -46,7 +46,7 @@
             <!-- Modal Header -->
             <div class="modal-header">
                 <div class="header-left">
-                    <img [src]="activeFlower?.icon" [alt]="activeFlower?.title" class="flower-icon-mini">
+                    <span class="flower-emoji-mini">{{ activeFlower?.icon }}</span>
                     <h2 class="modal-title">{{ activeFlower?.title }}</h2>
                 </div>
                 <button class="close-btn" (click)="closeModal()" aria-label="Close modal">
@@ -138,11 +138,12 @@
             </svg>
         </a>
 
-        <button class="coffee-btn" aria-label="Buy me a coffee" appRipple>
+        <a href="https://buymeacoffee.com/sofisofidev" target="_blank" class="coffee-btn" aria-label="Buy me a coffee"
+            appRipple>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" />
                 <path d="M6 1v3M10 1v3M14 1v3" />
             </svg>
-        </button>
+        </a>
     </div>
 </main>

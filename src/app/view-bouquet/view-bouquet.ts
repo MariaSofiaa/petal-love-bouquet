@@ -37,25 +37,25 @@ export class ViewBouquetComponent implements OnInit, AfterViewChecked {
     {
       id: 1,
       title: 'Our Song',
-      icon: '/assets/flower-pink-cosmos.png',
+      icon: '🌸',
       description: 'Listening to our favorite melody...'
     },
     {
       id: 2,
       title: 'A Message',
-      icon: '/assets/flower-red-hibiscus.png',
+      icon: '🌺',
       description: 'Reading your sweet words...'
     },
     {
       id: 3,
       title: 'A Little Surprise',
-      icon: '/assets/flower-pink-tulip.png',
+      icon: '🌷',
       description: 'Solving the puzzle of our love...'
     },
     {
       id: 4,
       title: 'Bright Daisy',
-      icon: '/assets/flower-white-daisy.png',
+      icon: '🌼',
       description: 'Looking at your special drawing...'
     }
   ];
@@ -67,13 +67,20 @@ export class ViewBouquetComponent implements OnInit, AfterViewChecked {
 
   ngOnInit() {
     this.route.queryParams.subscribe(async params => {
-      const encodedData = params['d'];
+      let encodedData = params['d'];
       console.log('ViewBouquet: Encoded data from URL:', encodedData);
+
+      // Fallback to localStorage if no URL data
+      if (!encodedData) {
+        encodedData = this.sharingService.getStoredReceivedBouquet();
+        console.log('ViewBouquet: Using stored data from localStorage:', encodedData);
+      }
+
       if (encodedData) {
         this.bouquetData = await this.sharingService.decodeBouquet(encodedData);
         console.log('ViewBouquet: Decoded bouquet data:', this.bouquetData);
       } else {
-        console.warn('ViewBouquet: No data parameter found in URL');
+        console.warn('ViewBouquet: No data parameter found in URL or localStorage');
       }
     });
   }

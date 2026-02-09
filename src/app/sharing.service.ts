@@ -15,6 +15,25 @@ export class SharingService {
 
     constructor() { }
 
+    saveReceivedBouquet(encoded: string) {
+        if (!encoded) return;
+        try {
+            localStorage.setItem('received_bouquet', encoded);
+            console.log('SharingService: Saved bouquet to storage');
+        } catch (e) {
+            console.error('SharingService: Error saving to localStorage', e);
+        }
+    }
+
+    getStoredReceivedBouquet(): string | null {
+        try {
+            return localStorage.getItem('received_bouquet');
+        } catch (e) {
+            console.error('SharingService: Error reading from localStorage', e);
+            return null;
+        }
+    }
+
     /**
      * Encodes bouquet data + Vector Drawing Paths into an ultra-short V4 string.
      */
