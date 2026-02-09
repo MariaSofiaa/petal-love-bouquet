@@ -469,6 +469,7 @@ main {
     box-shadow: 0 10px 30px rgba(255, 178, 188, 0.15);
     position: relative;
     margin: 0rem auto !important;
+    gap: 0;
 }
 
 .puzzle-piece {
@@ -497,27 +498,24 @@ main {
     background-color: #ffb2bc;
     position: relative;
     box-shadow: inset -2px -2px 6px rgba(0, 0, 0, 0.05), inset 2px 2px 6px rgba(255, 255, 255, 0.8);
+    overflow: hidden;
 }
 
-/* Custom Interlocking Shapes */
+/* Corner rounding for the grid pieces */
 .piece-0 {
-    mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 H100 A15,15 0 0,1 100,30 A15,15 0 0,1 100,60 V100 H70 A15,15 0 0,0 40,100 A15,15 0 0,0 10,100 H0 Z' /%3E%3C/svg%3E");
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 H100 A15,15 0 0,1 100,30 A15,15 0 0,1 100,60 V100 H70 A15,15 0 0,0 40,100 A15,15 0 0,0 10,100 H0 Z' /%3E%3C/svg%3E");
+    border-top-left-radius: 15px;
 }
 
 .piece-1 {
-    mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 H100 V100 H70 A15,15 0 0,1 40,100 A15,15 0 0,1 10,100 H0 V65 A15,15 0 0,0 0,35 A15,15 0 0,0 0,10 Z' /%3E%3C/svg%3E");
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 H100 V100 H70 A15,15 0 0,1 40,100 A15,15 0 0,1 10,100 H0 V65 A15,15 0 0,0 0,35 A15,15 0 0,0 0,10 Z' /%3E%3C/svg%3E");
+    border-top-right-radius: 15px;
 }
 
 .piece-2 {
-    mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 H30 A15,15 0 0,1 60,0 A15,15 0 0,1 90,0 H100 V35 A15,15 0 0,0 100,65 A15,15 0 0,0 100,90 V100 H0 Z' /%3E%3C/svg%3E");
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 H30 A15,15 0 0,1 60,0 A15,15 0 0,1 90,0 H100 V35 A15,15 0 0,0 100,65 A15,15 0 0,0 100,90 V100 H0 Z' /%3E%3C/svg%3E");
+    border-bottom-left-radius: 15px;
 }
 
 .piece-3 {
-    mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,35 A15,15 0 0,1 0,65 V100 H100 V0 H65 A15,15 0 0,0 35,0 A15,15 0 0,0 5,0 H0 Z' /%3E%3C/svg%3E");
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,35 A15,15 0 0,1 0,65 V100 H100 V0 H65 A15,15 0 0,0 35,0 A15,15 0 0,0 5,0 H0 Z' /%3E%3C/svg%3E");
+    border-bottom-right-radius: 15px;
 }
 
 /* The Heart Shape segment on each piece */
@@ -526,31 +524,36 @@ main {
     position: absolute;
     width: 200%;
     height: 200%;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 25 C50 5, 85 5, 85 35 C85 65, 50 85, 50 95 C50 85, 15 65, 15 35 C15 5, 50 5, 50 25' fill='white' /%3E%3C/svg%3E");
-    background-size: 85% 85%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 90 C50 90 10 65 10 35 C10 15 25 10 40 10 C45 10 48 12 50 15 C52 12 55 10 60 10 C75 10 90 15 90 35 C90 65 50 90 50 90' fill='white' /%3E%3C/svg%3E");
+    background-size: 80% 80%;
     background-repeat: no-repeat;
     background-position: center;
     opacity: 0.95;
     pointer-events: none;
+    transition: all 0.3s ease;
 }
 
-/* Position the heart parts accurately */
-.piece-0::before {
+/* Position the heart parts accurately for a 2x2 grid */
+/* Top Left segment */
+.piece-content.piece-0::before {
     top: 0;
     left: 0;
 }
 
-.piece-1::before {
+/* Top Right segment */
+.piece-content.piece-1::before {
     top: 0;
     left: -100%;
 }
 
-.piece-2::before {
+/* Bottom Left segment */
+.piece-content.piece-2::before {
     top: -100%;
     left: 0;
 }
 
-.piece-3::before {
+/* Bottom Right segment */
+.piece-content.piece-3::before {
     top: -100%;
     left: -100%;
 }
