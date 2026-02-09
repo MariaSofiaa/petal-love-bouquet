@@ -148,6 +148,7 @@ export class CreateBouquetComponent implements AfterViewInit {
     goBack() {
         if (this.currentStep > 1) {
             this.currentStep--;
+            window.scrollTo(0, 0);
         } else {
             this.router.navigate(['/home']);
         }
@@ -167,10 +168,13 @@ export class CreateBouquetComponent implements AfterViewInit {
     async nextStep() {
         if (this.currentStep === 1 && this.isValidLink()) {
             this.currentStep = 2;
+            window.scrollTo(0, 0);
         } else if (this.currentStep === 2 && this.isValidMessage()) {
             this.currentStep = 3;
+            window.scrollTo(0, 0);
         } else if (this.currentStep === 3) {
             this.currentStep = 4;
+            window.scrollTo(0, 0);
             setTimeout(() => this.initCanvas(), 100);
         } else if (this.currentStep === 4) {
             await this.finishBouquet();
