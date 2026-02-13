@@ -1,14 +1,17 @@
 <div class="background-container"></div>
 
 <main>
-    <div class="content-wrapper">
-        <!-- Back button -->
+    <!-- Back button moves outside wrapper to stay at far left -->
+    <div class="btnSpace">
         <button class="back-btn" routerLink="/receive" aria-label="Go back" appRipple>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M19 12H5M12 19l-7-7 7-7" />
             </svg>
         </button>
+    </div>
 
+
+    <div class="content-wrapper">
         <!-- Header section -->
         <div class="header-section animate-fade-up">
             <h2 class="title">Tap each flower to discover its message</h2>
